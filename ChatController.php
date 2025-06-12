@@ -21,7 +21,7 @@ class ChatController extends Controller
     public function fetchAI()
     {   
         $chat = Chat::where("session_id", session()->getId())->latest()->first();
-        if($chat->user !== "AI Bot"){
+        if($chat->user == "Guest"){
             Chat::create([
                'user' => 'AI Bot',
                'session_id' => session()->getId(),
